@@ -1,3 +1,9 @@
+/**
+* 
+* This class demonstrates creation of objects using
+* static static factory methods instead of constructors.
+*
+*/
 class Temperature {
   private double centigrade;
 
