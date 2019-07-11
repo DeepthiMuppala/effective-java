@@ -1,8 +1,8 @@
 class Temperature {
-  private double temp;
+  private double centigrade;
 
   private Temperature(double temp) {
-    this.temp = temp;
+    this.centigrade = temp;
   }
 
   public static Temperature fromCentigrade(double centigrade) {
@@ -17,11 +17,11 @@ class Temperature {
   }
 
   public double getCentigrade() {
-    return this.temp;
+    return this.centigrade;
   }
 
   public double getFahrenheit() {
-    double f = (this.temp * 9 / 5) + 32;
+    double f = (this.centigrade * 9 / 5) + 32;
     return f;
   }
 
