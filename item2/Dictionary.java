@@ -1,17 +1,20 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Dictionary {
-  private Map<String, Object> dict = new HashMap<String, Object>();
+  private Map<String, Object> elements = new HashMap<String, Object>();
 
   private Dictionary(Builder builder) {
-    dict = builder.dict;
+    elements =  builder.dict.entrySet()
+    .stream()
+    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
   }
 
   @Override
   public String toString() {
     StringBuilder str = new StringBuilder("{\n");
-    for (String key : dict.keySet()) {
-      String[] valueStrLines = dict.get(key).toString().split("\\r?\\n");
+    for (String key : elements.keySet()) {
+      String[] valueStrLines = elements.get(key).toString().split("\\r?\\n");
       str.append("\t\"" + key + "\" : " + valueStrLines[0] + "\n");
       for (int i = 1; i < valueStrLines.length; i++)
         str.append("\t" + valueStrLines[i] + "\n");
