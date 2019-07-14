@@ -9,15 +9,15 @@ public class Dictionary {
 
   @Override
   public String toString() {
-    String str = "{\n";
+    StringBuilder str = new StringBuilder("{\n");
     for (String key : dict.keySet()) {
       String[] valueStrLines = dict.get(key).toString().split("\\r?\\n");
-      str += "\t\"" + key + "\" : " + valueStrLines[0] + "\n";
+      str.append("\t\"" + key + "\" : " + valueStrLines[0] + "\n");
       for (int i = 1; i < valueStrLines.length; i++)
-        str += "\t" + valueStrLines[i] + "\n";
+        str.append("\t" + valueStrLines[i] + "\n");
     }
-    str += ("}");
-    return str;
+    str.append("}");
+    return str.toString();
   }
 
   public static Builder createObjectBuilder() {
