@@ -21,5 +21,4 @@ public class Logger {
     String formattedDate = myDateObj.format(myFormatObj);
     System.out.println(formattedDate + " " + className + " " + level + " " + message);
   }
-
 }
