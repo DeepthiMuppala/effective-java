@@ -19,6 +19,6 @@ public class Logger {
     LocalDateTime myDateObj = LocalDateTime.now();
     DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd:HH:mm:ss");
     String formattedDate = myDateObj.format(myFormatObj);
-    System.out.println(formattedDate + " " + className + " " + level + " " + message);
+    System.out.println(formattedDate + " className: " + className + " Log level: " + level + " Message: " + message);
   }
 }
