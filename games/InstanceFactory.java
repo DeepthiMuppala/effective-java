@@ -21,5 +21,4 @@ class InstanceFactory{
   public Card getCardInstance(String type, Deck.Symbol symbol){
     return new Card(type, symbol); 
   }
-
 }

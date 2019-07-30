@@ -2,9 +2,13 @@ import java.util.Scanner;
 
 class BlackJack {
 
-  public BlackJack(Deck deck, Dealer dealer, Player player,  PlayUtil playUtil) {
-    dealer.initialize(deck, playUtil);
-    player.initialize(deck, playUtil);
+
+  public BlackJack(Deck deck, Dealer dealer, Player player) {
+    PlayUtil playUtil1 = new PlayUtil();
+    dealer.initialize(deck, playUtil1);
+
+    PlayUtil playUtil2 = new PlayUtil();
+    player.initialize(deck, playUtil2);
   }
 
   public static void main(String[] args) {
@@ -12,8 +16,7 @@ class BlackJack {
     Deck deck = inst.getDeckInstance((int) Math.random() * 100);
     Dealer dealer = inst.getDealerInstance();
     Player player = inst.getPlayerInstance();
-    PlayUtil playUtil = new PlayUtil();
-    BlackJack bj = new BlackJack(deck, dealer, player, playUtil);
+    BlackJack bj = new BlackJack(deck, dealer, player);
     String option;
     Integer playerCount = 0;
     do {
