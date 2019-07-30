@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 class BlackJack {
 
-  public BlackJack(Deck deck, Dealer dealer, Player player) {
-    dealer.initialize(deck);
-    player.initialize(deck);
+  public BlackJack(Deck deck, Dealer dealer, Player player,  PlayUtil playUtil) {
+    dealer.initialize(deck, playUtil);
+    player.initialize(deck, playUtil);
   }
 
   public static void main(String[] args) {
@@ -12,7 +12,8 @@ class BlackJack {
     Deck deck = inst.getDeckInstance((int) Math.random() * 100);
     Dealer dealer = inst.getDealerInstance();
     Player player = inst.getPlayerInstance();
-    BlackJack bj = new BlackJack(deck, dealer, player);
+    PlayUtil playUtil = new PlayUtil();
+    BlackJack bj = new BlackJack(deck, dealer, player, playUtil);
     String option;
     Integer playerCount = 0;
     do {
@@ -30,6 +31,8 @@ class BlackJack {
       } else {
         System.out.println("Player Won!!");
       }
+    } else{
+      System.out.println("Sorry u lost :(");
     }
   }
 }
