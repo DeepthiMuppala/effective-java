@@ -2,11 +2,11 @@ import java.util.Set;
 import java.util.HashSet;
 
 class Deck {
-  public enum Symbol {
-    DIAMOND, HEART, SPADE, CLUB;
-  }
+  // public enum Symbol {
+  //   DIAMOND, HEART, SPADE, CLUB;
+  // }
 
-  private String[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
+  // private String[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
 
   private int num;
 
@@ -24,10 +24,10 @@ class Deck {
     return Integer.toString((int) Math.ceil(Math.random() * num));
   }
 
-  public  Card randomCard() {
+  public Card randomCard() {
     String deck = randomDeck();
-    Symbol symbol = getSymbol();
-    String type = values[(int) Math.ceil(Math.random() * values.length)-1];
+    Card.Symbol symbol = getSymbol();
+    String type = Card.values[(int) Math.ceil(Math.random() * Card.values.length)-1];
     String symbolType = symbol + "," + type;
     String deckType = deck + "," + symbolType;
     Card card;
@@ -41,8 +41,8 @@ class Deck {
     return card;
   }
 
-  public Symbol getSymbol() {
+  public Card.Symbol getSymbol() {
     int i = (int) (Math.random() * (52 / 13));
-    return Deck.Symbol.values()[i];
+    return Card.Symbol.values()[i];
   }
 }

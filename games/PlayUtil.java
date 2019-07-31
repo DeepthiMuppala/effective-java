@@ -11,7 +11,7 @@ class PlayUtil {
       if (card.getFaceValue().equals("A")) {
         aceCount++;
       }
-      faceValueCount += 10;
+      faceValueCount += 11;
     } else {
       value = Integer.parseInt(card.getFaceValue());
       faceValueCount += value;
@@ -22,7 +22,7 @@ class PlayUtil {
   public int checkWinLooseCondition(int faceValueCount) {
     System.out.println("faceValueCount " + faceValueCount);
     if (faceValueCount > 21 && aceCount > 0) {
-      faceValueCount -= ((aceCount * 10) + aceCount);
+      faceValueCount = (faceValueCount - (aceCount * 11)) + aceCount;
       aceCount = 0;
       return checkWinLooseCondition(faceValueCount);
     }
