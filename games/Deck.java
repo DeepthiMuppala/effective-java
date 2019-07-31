@@ -1,5 +1,4 @@
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 class Deck {
   // public enum Symbol {
@@ -26,22 +25,27 @@ class Deck {
 
   public Card randomCard() {
     String deck = randomDeck();
-    Card.Symbol symbol = getSymbol();
-    String type = Card.values[(int) Math.ceil(Math.random() * Card.values.length)-1];
-    String symbolType = symbol + "," + type;
+    Card.Symbol symbol = getRandomSymbol();
+    Card.Face face = getRandomFace();
+    String symbolType = symbol + "," + face;
     String deckType = deck + "," + symbolType;
     Card card;
     if (cardSet.contains(deckType)) {
       card = randomCard();
     } else {
       InstanceFactory inst =  InstanceFactory.getFactoryInstance();
-      card = inst.getCardInstance(type, symbol);
+      card = inst.getCardInstance(face, symbol);
     }
     cardSet.add(deckType);
     return card;
   }
 
-  public Card.Symbol getSymbol() {
+  public Card.Face getRandomFace() {
+    int randomIndex = (int) Math.ceil((Math.random() * Card.Face.values().length)-1);
+    return Card.Face.values()[randomIndex];
+  }
+
+  public Card.Symbol getRandomSymbol() {
     int i = (int) (Math.random() * (52 / 13));
     return Card.Symbol.values()[i];
   }

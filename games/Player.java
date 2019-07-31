@@ -9,24 +9,35 @@ class Player {
   }
 
   private int faceValueCount = 0;
-  PlayUtil playUtil;
+  private int aceCount = 0;
 
-  public void initialize(Deck deck, PlayUtil playUtil) {
-    this.playUtil = playUtil;
+  public void initialize(Deck deck) {
     System.out.println("Initializing Player: ");
     Card card1 = deck.randomCard();
     Card card2 = deck.randomCard();
-    faceValueCount = playUtil.handleCount(card1, faceValueCount);
-    faceValueCount = playUtil.handleCount(card2, faceValueCount);
+    if(card1.face == Card.Face.A){
+      aceCount++;
+    }
+    if(card2.face == Card.Face.A){
+      aceCount++;
+    }
+    faceValueCount += Card.getFaceValue(card1);
+    faceValueCount += Card.getFaceValue(card2);
     System.out.println(card1);
     System.out.println(card2);
   }
 
-  public Integer hit(Deck deck) {
+  public void hit(Deck deck) {
     Card card = deck.randomCard();
+    if(card.face == Card.Face.A){
+      aceCount++;
+    }
     System.out.println(card);
-    faceValueCount = playUtil.handleCount(card, faceValueCount);
-    faceValueCount = playUtil.checkWinLooseCondition(faceValueCount);
+    faceValueCount += Card.getFaceValue(card);
+    faceValueCount = PlayUtil.checkWinLooseCondition(faceValueCount, aceCount);
+  }
+
+  public int getCurrentCount(){
     return faceValueCount;
   }
 }

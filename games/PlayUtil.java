@@ -1,30 +1,12 @@
 import java.util.*;
 
 class PlayUtil {
-  private int aceCount = 0;
-  String[] highCards = { "K", "J", "Q", "A" };
-  Set<String> set = new HashSet<>(Arrays.asList(highCards));
-
-  public int handleCount(Card card, int faceValueCount) {
-    int value;
-    if (set.contains(card.getFaceValue())) {
-      if (card.getFaceValue().equals("A")) {
-        aceCount++;
-      }
-      faceValueCount += 11;
-    } else {
-      value = Integer.parseInt(card.getFaceValue());
-      faceValueCount += value;
-    }
-    return faceValueCount;
-  }
-
-  public int checkWinLooseCondition(int faceValueCount) {
+  public static int checkWinLooseCondition(int faceValueCount, int aceCount) {
     System.out.println("faceValueCount " + faceValueCount);
     if (faceValueCount > 21 && aceCount > 0) {
-      faceValueCount = (faceValueCount - (aceCount * 11)) + aceCount;
+      faceValueCount -= aceCount * 10;
       aceCount = 0;
-      return checkWinLooseCondition(faceValueCount);
+      return PlayUtil.checkWinLooseCondition(faceValueCount, aceCount);
     }
     return faceValueCount;
   }

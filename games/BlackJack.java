@@ -2,13 +2,9 @@ import java.util.Scanner;
 
 class BlackJack {
 
-
   public BlackJack(Deck deck, Dealer dealer, Player player) {
-    PlayUtil playUtil1 = new PlayUtil();
-    dealer.initialize(deck, playUtil1);
-
-    PlayUtil playUtil2 = new PlayUtil();
-    player.initialize(deck, playUtil2);
+    dealer.initialize(deck);
+    player.initialize(deck);
   }
 
   public static void main(String[] args) {
@@ -18,23 +14,24 @@ class BlackJack {
     Player player = inst.getPlayerInstance();
     BlackJack bj = new BlackJack(deck, dealer, player);
     String option;
-    Integer playerCount = 0;
     do {
       Scanner scanner = new Scanner(System.in);
       System.out.print("Enter \"H\" to Hit or Any other Key to fold: ");
       option = scanner.next();
       if ((option.equals("H") || option.equals("h"))) {
-        playerCount = player.hit(deck);
+        player.hit(deck);
       }
-    } while ((playerCount < 22) && (option.equals("H") || option.equals("h")));
-    if ((playerCount < 22)) {
-      Integer dealerCount = dealer.play(deck);
-      if (dealerCount < 22 && playerCount < dealerCount) {
+    } while ((player.getCurrentCount() < 22) && (option.equals("H") || option.equals("h")));
+    if ((player.getCurrentCount() < 22)) {
+      dealer.play(deck);
+      System.out.println("Dealer Count: " + dealer.getCurrentCount());
+      System.out.println("Player Count: " + player.getCurrentCount());
+      if (dealer.getCurrentCount() < 22 && player.getCurrentCount() < dealer.getCurrentCount()) {
         System.out.println("Dealer Won!!");
       } else {
         System.out.println("Player Won!!");
       }
-    } else{
+    } else {
       System.out.println("Sorry u lost :(");
     }
   }

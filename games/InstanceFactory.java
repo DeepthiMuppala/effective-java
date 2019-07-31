@@ -18,7 +18,7 @@ class InstanceFactory{
     return Deck.getDeckInstance(num);
   }
 
-  public Card getCardInstance(String type, Card.Symbol symbol){
-    return new Card(type, symbol); 
+  public Card getCardInstance(Card.Face face, Card.Symbol symbol){
+    return new Card(face, symbol); 
   }
 }
