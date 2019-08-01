@@ -1,12 +1,6 @@
 import java.util.*;
 
 class Deck {
-  // public enum Symbol {
-  //   DIAMOND, HEART, SPADE, CLUB;
-  // }
-
-  // private String[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
-
   private int num;
 
   private Deck(int num) {

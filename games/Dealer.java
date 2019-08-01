@@ -11,7 +11,7 @@ class Dealer {
     return new Dealer();
   }
 
-  public void initialize(Deck deck) {
+  public void dealInitialCards(Deck deck) {
     System.out.println("Initializing Dealer: ");
     card1 = deck.randomCard();
     Card card2 = deck.randomCard();
@@ -22,8 +22,8 @@ class Dealer {
     if(card2.face == Card.Face.A){
       aceCount++;
     }
-    faceValueCount += Card.getFaceValue(card1);
-    faceValueCount += Card.getFaceValue(card2);
+    faceValueCount += BlackJackUtil.getFaceValue(card1);
+    faceValueCount += BlackJackUtil.getFaceValue(card2);
     System.out.println(card2);
   }
 
@@ -35,8 +35,8 @@ class Dealer {
         aceCount++;
       }
       System.out.println(card);
-      faceValueCount += Card.getFaceValue(card);
-      faceValueCount = PlayUtil.checkWinLooseCondition(faceValueCount, aceCount);
+      faceValueCount += BlackJackUtil.getFaceValue(card);
+      faceValueCount = BlackJackUtil.checkWinLooseCondition(faceValueCount, aceCount);
     }
   }
 

@@ -1,18 +1,19 @@
 import java.util.Scanner;
 
 class BlackJack {
+  private Deck deck;
+  private Dealer dealer;
+  private Player player;
 
   public BlackJack(Deck deck, Dealer dealer, Player player) {
-    dealer.initialize(deck);
-    player.initialize(deck);
+    this.deck = deck;
+    this.dealer = dealer;
+    dealer.dealInitialCards(deck);
+    this.player = player;
+    player.dealInitialCards(deck);
   }
 
-  public static void main(String[] args) {
-    InstanceFactory inst = InstanceFactory.getFactoryInstance();
-    Deck deck = inst.getDeckInstance((int) Math.random() * 100);
-    Dealer dealer = inst.getDealerInstance();
-    Player player = inst.getPlayerInstance();
-    BlackJack bj = new BlackJack(deck, dealer, player);
+  public void play() {
     String option;
     do {
       Scanner scanner = new Scanner(System.in);
@@ -34,5 +35,14 @@ class BlackJack {
     } else {
       System.out.println("Sorry u lost :(");
     }
+  }
+
+  public static void main(String[] args) {
+    InstanceFactory inst = InstanceFactory.getFactoryInstance();
+    Deck deck = inst.getDeckInstance((int) Math.random() * 100);
+    Dealer dealer = inst.getDealerInstance();
+    Player player = inst.getPlayerInstance();
+    BlackJack bj = new BlackJack(deck, dealer, player);
+    bj.play();
   }
 }
