@@ -14,11 +14,11 @@ class Sudoku {
     return board;
   }
 
-  public void printBoard(int[][] solvedBoard) {
-    for(int i=0; i < solvedBoard.length; i++) {
+  public void printBoard() {
+    for(int i=0; i < board.length; i++) {
       System.out.println();
-      for(int j=0; j< solvedBoard[0].length; j++){
-        System.out.print(" " + solvedBoard[i][j]);
+      for(int j=0; j< board[0].length; j++){
+        System.out.print(" " + board[i][j]);
       }
       System.out.println();
     }
