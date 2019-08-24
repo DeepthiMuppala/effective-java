@@ -7,6 +7,7 @@ class TicTacToe {
     int size = 0;
     int count = 0;
     boolean isCompleted = false;
+
     Scanner scanner = new Scanner(System.in);
     do {
         System.out.print("Please initialize the size greater than 2 ");

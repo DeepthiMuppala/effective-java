@@ -18,6 +18,7 @@ class Board {
 
   char[][] board;
   boolean isCompleted = false;
+
   public Board(int n) {
     board = new char[n][n];
     for(int i = 0; i < board.length; i++){
